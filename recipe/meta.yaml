@@ -16,11 +16,13 @@ source:
     - triangle.h.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - mpich
     - xorg-libx11
   run:
@@ -36,6 +38,7 @@ about:
   home: http://www.cs.cmu.edu/~quake/triangle.html
   license: MIT-like
   license_family: MIT
+  license_file: README
   summary: 'A Two-Dimensional Quality Mesh Generator and Delaunay Triangulator.'
 
   description: |
