@@ -21,6 +21,8 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - mpich
     - xorg-libx11
   run:
