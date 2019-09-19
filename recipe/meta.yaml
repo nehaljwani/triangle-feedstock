@@ -36,6 +36,7 @@ about:
   home: http://www.cs.cmu.edu/~quake/triangle.html
   license: MIT-like
   license_family: MIT
+  license_file: README
   summary: 'A Two-Dimensional Quality Mesh Generator and Delaunay Triangulator.'
 
   description: |
