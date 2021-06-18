@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     # Obtained from https://github.com/erdc-cm/triangle
-    - makefile_linux.patch  # [not win]
+    - makefile_unix.patch  # [unix]
     - makefile_win.patch  # [win]
     - triangle.h.patch
 
@@ -23,16 +23,19 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - mpich  # [not win]
-    - xorg-libx11  # [not win]
+    - mpich  # [unix]
+    - xorg-libx11  # [unix]
   run:
-    - mpich  # [not win]
+    - mpich  # [unix]
 
 test:
   commands:
-    - test -f ${PREFIX}/bin/triangle  # [not win]
-    - test -f ${PREFIX}/lib/libtri.a  # [not win]
-    - test -f ${PREFIX}/include/triangle.h  # [not win]
+    - test -f ${PREFIX}/bin/triangle  # [unix]
+    - test -f ${PREFIX}/lib/libtri.a  # [unix]
+    - test -f ${PREFIX}/include/triangle.h  # [unix]
+    - if not exist %LIBRARY_PREFIX%\bin\triangle.exe exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\lib\libtri.lib exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\include\triangle.h exit 1  # [win]
 
 about:
   home: http://www.cs.cmu.edu/~quake/triangle.html
